@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:TarefasApp.UI"
     xmlns:views="clr-namespace:TarefasApp.UI.Views"
+    xmlns:sys="clr-namespace:System;assembly=netstandard"
     Shell.FlyoutBehavior="Flyout">
     
     <!-- Desenhando um cabeçalho no menu lateral -->
@@ -39,5 +40,38 @@
         ContentTemplate="{DataTemplate views:Dashboard}"
         Route="Dashboard"
         />
+
+    <ShellContent
+        Title="Cadastro de Tarefas"
+        ContentTemplate="{DataTemplate views:TaskCreate}"
+        Route="TaskCreate"
+        />
+
+    <ShellContent
+        Title="Consulta de Tarefas"
+        ContentTemplate="{DataTemplate views:TaskList}"
+        Route="TaskList"
+        />
+
+    <ShellContent
+        Title="Edição de Tarefas"
+        ContentTemplate="{DataTemplate views:TaskEdit}"
+        Route="TaskEdit"
+        />
+
+    <!-- Rodapé do menu lateral -->
+    <Shell.FlyoutFooter>
+        <StackLayout BackgroundColor="#eee" Padding="10">
+            <Label
+                Text="Treinamento .NET MAUI - COTI Informática"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                />
+            <Label Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:MMMM dd, yyyy}'}"
+                TextColor="Black"
+                   HorizontalOptions="Center"
+                />
+        </StackLayout>
+    </Shell.FlyoutFooter>
 
 </Shell>

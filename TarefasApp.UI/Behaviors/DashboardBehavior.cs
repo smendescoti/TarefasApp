@@ -31,25 +31,28 @@ namespace TarefasApp.UI.Behaviors
             #region Capturar as informações do usuário autenticado
 
             var auth = await SecureStorage.GetAsync("auth_user");
-            _autenticarResponseModel = JsonConvert.DeserializeObject<AutenticarResponseModel>(auth);
+            if(auth != null)
+            {
+                _autenticarResponseModel = JsonConvert.DeserializeObject<AutenticarResponseModel>(auth);
 
-            #endregion
+                #endregion
 
-            #region Capturar os elementos da página
+                #region Capturar os elementos da página
 
-            _nomeUsuario = bindable.FindByName<Label>("nomeUsuario");
-            _emailUsuario = bindable.FindByName<Label>("emailUsuario");
-            _btnLogout = bindable.FindByName<Button>("btnLogout");
+                _nomeUsuario = bindable.FindByName<Label>("nomeUsuario");
+                _emailUsuario = bindable.FindByName<Label>("emailUsuario");
+                _btnLogout = bindable.FindByName<Button>("btnLogout");
 
-            #endregion
+                #endregion
 
-            #region Criando os eventos
+                #region Criando os eventos
 
-            _nomeUsuario.Text = _autenticarResponseModel.Nome;
-            _emailUsuario.Text = _autenticarResponseModel.Email;
-            _btnLogout.Clicked += OnLogoutClicked;
+                _nomeUsuario.Text = _autenticarResponseModel.Nome;
+                _emailUsuario.Text = _autenticarResponseModel.Email;
+                _btnLogout.Clicked += OnLogoutClicked;
 
-            #endregion
+                #endregion
+            }
         }
 
         /// <summary>

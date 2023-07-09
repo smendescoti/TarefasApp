@@ -6,4 +6,9 @@ public partial class Dashboard : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void btnLogout_SizeChanged(object sender, EventArgs e)
+    {
+
+    }
 }
